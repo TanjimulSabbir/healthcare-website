@@ -46,7 +46,7 @@ const BlogDetails = () => {
                 Orange & Pineapple: Eating tart fruits such as oranges and pineapples may cause the mouth to produce more saliva, which washes teeth clean naturally. Beware of using lemons directly on teeth, because too much acidity can damage teeth.
 
                 Source: www.aarp.org</div>
-            <div className='flex items-center space-x-4 mb-20'>
+            <div className='flex flex-col space-y-3 justify-center lg:space-y-0 lg:mx-0 lg:flex-row lg:items-center lg:space-x-4 mb-20'>
                 <p className='text-xl text-black cursor-pointer'><FontAwesomeIcon icon={faTags}></FontAwesomeIcon> Tags: Clinic, dental, dentistry, teeth</p>
                 <div className='w-10 flex items-center'>
                     <img className='ml-4 cursor-pointer boreder' src={facebook} alt="" srcset="" />

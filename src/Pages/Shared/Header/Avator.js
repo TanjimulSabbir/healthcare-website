@@ -12,13 +12,15 @@ const Avator = () => {
     };
     return (
         <div>
-            <div className="dropdown dropdown-end bg-black">
+            <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                         <img src={user && user?.photoURL} alt='' />
-                        <p className='lg:hidden text-white bg-red'>{(user && user?.displayName) || "No User"}</p>
+
                     </div>
                 </label>
+                <p className='lg:hidden text-white bg-red'>
+                    {user ? user?.displayName : "No User"}</p>
                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content rounded-box w-52 hidden lg:block bg-black">
                     <li>
                         <a>
