@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import logo from '../../../Assets/images/dentalBrandLogo.jpg'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../../Assets/images/tooth-3.png'
 import auth from '../../../Firebase/Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import Avator from './Avator';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCarTunnel, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import Home from '../../Home/Home';
-import Login from '../../Login/Login';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const logout = () => {
         signOut(auth);
     };
-    const navigate = useNavigate();
     const getCart = localStorage.getItem("cart");
     console.log(getCart, "Header")
     const menuItems = <>
@@ -37,7 +34,7 @@ const Header = () => {
         </li>
         <li><Link to="/contact">Contact Us</Link></li>
         <Avator></Avator>
-        <li className='flex justify-center items-center relative'><FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon> <span className='absolute -top-2 right-0 rounded-full p-1 bg-violet-600'>{getCart}</span></li>
+        <li className='flex justify-center items-center relative'><FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon> <span className='absolute -top-2 right-0 rounded-full p-1 bg-violet-600'>{getCart}</span></li>
     </>
 
     return (
