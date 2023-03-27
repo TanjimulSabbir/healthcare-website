@@ -6,41 +6,26 @@ import c4 from '../../Assets/images/slider-3.jpg'
 
 const Banner = () => {
     return (
-        <div className="carousel w-full shadow-2xl">
-            <div id="slide1" className="carousel-item relative w-full bg-black">
-                <img src="https://images.unsplash.com/photo-1585842378054-ee2e52f94ba2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" className="w-full" alt='' />
-                <div className="absolute flex justify-between transform-translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="">❮</a>
-                    <h2 className='text-7xl font-serif'></h2>
-                    <a href="#slide2" className="">❯</a>
+        <div className='relative'>
+            <div className="relative carousel w-full h-full max-h-screen">
+                <div id="item1" className="carousel-item w-full">
+                    <img src="https://images.pexels.com/photos/4069882/pexels-photo-4069882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="w-full" />
+
+
                 </div>
-            </div>
-            <div id="slide2" className="carousel-item relative w-full">
-                <img src="https://images.unsplash.com/photo-1643660527083-5149b75387ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" className="w-full" alt='' />
-                <div className="absolute flex justify-between transform-translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" className="">❮</a>
-                    <h2 className='text-7xl font-serif bg-transparent'></h2>
-                    <a href="#slide3" className="">❯</a>
-                </div>
-            </div>
-            <div id="slide3" className="carousel-item relative w-full">
-                <img src="https://images.unsplash.com/photo-1642979904720-a552640c2319?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" className="w-full" alt='' />
-                <div className="absolute flex justify-between transform-translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide2" className="">❮</a>
-                    <h2 className='text-7xl font-serif'></h2>
-                    <a href="#slide4" className="">❯</a>
-                </div>
-            </div>
-            <div id="slide4" className="carousel-item relative w-full">
-                <img src="https://images.unsplash.com/photo-1606811842243-af7e16970c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" className="w-full" alt='' />
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide3" className="">❮</a>
-                    <h2 className='text-7xl font-serif p-6'></h2>
-                    <a href="#slide1" className="">❯</a>
+
+                <div id="item3" className="carousel-item w-full">
+                    <img src="https://images.unsplash.com/photo-1585842378054-ee2e52f94ba2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" className="w-full" />
                 </div>
 
             </div>
+            <div className="absolute bottom-2 bg-transparent flex justify-center w-full py-2 gap-2">
+                <a href="#item1" className="btn btn-xs">1</a>
+
+                <a href="#item3" className="btn btn-xs">2</a>
+            </div>
         </div>
+
 
     );
 };
