@@ -26,7 +26,7 @@ const ServicesCards = () => {
                         <img className='rounded px-5' src={icon} alt="" srcset="" />
                         <h1 className='text-2xl my-5 font-bold text-blue-500 px-5'>{title}</h1>
                         <p className='text-black text-lg px-5'>{description}</p>
-                        <Link className='btn bg-pink-500  text-white border-none absolute bottom-0 w-full' to={`/services/${_id}`}>Learn More</Link>
+                        <Link className='btn bg-green-500  text-white border-none absolute bottom-0 w-full' to={`/services/${_id}`}>Learn More</Link>
                     </div>
                 })
             }

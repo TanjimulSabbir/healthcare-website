@@ -30,7 +30,7 @@ const Avator = () => {
                     <li><a>Settings</a></li>
                     <li>   {
                         user ? <Link onClick={() => {
-                            const isLogOut = window.confirm("Do you want to LogOut");
+                            const isLogOut = window.confirm("Do you want to Log-out");
                             if (isLogOut) {
                                 logout()
                                 return navigate("/login")

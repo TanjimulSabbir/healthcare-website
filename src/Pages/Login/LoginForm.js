@@ -1,55 +1,78 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import auth from '../../Firebase/Firebase.init';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import Loading from '../Loading/Loading';
-import { async } from '@firebase/util';
-import { faL } from '@fortawesome/free-solid-svg-icons';
-
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../Firebase/Firebase.init";
+import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 const LoginForm = () => {
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
-    const [ToastMessageTrue, setToastMessageTrue] = useState(false)
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    const [show, setShow] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        if (email && (password.length >= 6)) {
-            signInWithEmailAndPassword(email, password)
-        }
-        else {
-            return alert("provide valid input")
-        }
-        await ToastMessage();
+    const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
+    const navigate = useNavigate()
+
+    const onSubmit = async (data) => {
+        alert("Currently Login Services Unavailable")
+        reset()
     };
 
-    const ToastMessage = () => {
-        return setToastMessageTrue(true)
-    };
 
     return (
-        <div className=''>
-            <form className='flex flex-col items-center space-y-6 text-black px-10 lg:px-0 pt-12' onSubmit={handleSubmit}>
-                <input type="email" className='input w-full bg-white border-black' name='email' placeholder="Email Address" />
-                <input type="password" className='input w-full bg-white border-black' name='password' placeholder="Password" />
-                <button className='btn btn-primary w-full' type='submit'>Login</button>
-            </form>
-            <p className='text-black mt-4'>Are you new here? <Link to="/signup" className='link-primary'>Create an Account</Link></p>
-            <div className=''>
-                {/* The button to open modal */}
-                <label htmlFor="my-modal-3" className="btn hidden">open modal</label>
-
-                {/* Put this part before </body> tag */}
-                <input type="checkbox" checked={ToastMessageTrue ? true : ""} id="my-modal-3" className="modal-toggle" />
-                <div className="modal">
-                    <div className="modal-box relative">
-                        <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setToastMessageTrue("")}>✕</label>
-                        <h3 className="text-lg font-bold">{loading && "Loading"}</h3>
-                        <p className="py-4">{error && error.message}</p>
-                    </div>
+        <div className="pb-14 pt-10">
+            <div className="card max-w-sm sm:max-w-md mx-auto shadow-2xl border">
+                <div className="text-center lg:text-center mt-4">
+                    <h1 className="text-3xl font-bold text-black">Login</h1>
                 </div>
+                <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input
+                            {...register("email", { required: "Email is required" })}
+                            type="email"
+                            placeholder="Email"
+                            className="input input-bordered bg-transparent"
+                        />
+                        <small className="text-red-500">{errors?.email?.message}</small>
+                    </div>
+                    <div className="form-control relative">
+                        <label className="label">
+                            <span className="label-text">Password</span>
+                        </label>
+                        <input {...register("password", { required: "Password is required", pattern: { value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.*[^\s]).{8,}$/, message: `Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character` } })} type={show ? "text" : "password"} placeholder="Password" className="input input-bordered bg-transparent" />
+
+                        <FontAwesomeIcon onClick={() => setShow(!show)}
+                            className="text-black cursor-pointer absolute top-[52px] right-2"
+                            icon={show ? faEye : faEyeSlash}>
+                        </FontAwesomeIcon>
+
+                        <small className="text-red-500">
+                            {errors?.password?.message}
+                        </small>
+                        <label className="label flex">
+                            <a href="#p" className="label-text-alt link link-hover">
+                                Forgot password?
+                            </a>
+                        </label>
+                    </div>
+
+                    <div className="form-control mt-4">
+                        <button type="submit" className="btn btn-success">Login</button>
+                    </div>
+                    <p className="text-sm link link-hover">
+                        Are you new here? <Link to={"/signup"} className='link text-black'>Create an account</Link>
+                    </p>
+                </form>
             </div>
         </div>
+
     );
 };
 

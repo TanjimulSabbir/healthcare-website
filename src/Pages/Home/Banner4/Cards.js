@@ -14,7 +14,7 @@ const Cards = () => {
         { _id: 4, title: "Tooth Extractions", description: "There are some important steps to follow..A root canal is one of the most common dental..Your teeth and smile are not only an important part of your overall health, but they can also help you feel confident.", icon: icon5, position: "lg:bottom-0 lg:right-4" },
     ]
     return (
-        <div className='lg:relative lg:pb-40 px-10 lg:px-0 '>
+        <div className='lg:relative lg:pb-60 px-10 lg:px-0 '>
             <img className='mx-auto lg:mb-0' src={icon3} alt="" />
             <div className=''>
                 {

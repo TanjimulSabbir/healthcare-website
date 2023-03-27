@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
@@ -25,9 +24,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/appoinment' element={<Appoinment />}></Route>
-        <Route path='/services' element={<RequiredPath>
+        <Route path='/services' element={
           <Services></Services>
-        </RequiredPath>}></Route>
+        }></Route>
         <Route path='/services/:_id' element={<ServiceDetails />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/blogs/:_id' element={<BlogDetails />}></Route>
